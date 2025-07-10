@@ -1108,3 +1108,86 @@ section {
 .provider-cancel:hover {
     color: var(--accent-color);
 } 
+
+.shadx-section {
+    padding: 5rem 0 4rem 0;
+    background: transparent;
+}
+.shadx-card {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    background: var(--surface);
+    border-radius: 24px;
+    box-shadow: var(--shadow-xl);
+    padding: 2.5rem 2rem;
+    max-width: 900px;
+    margin: 0 auto 2rem auto;
+    flex-wrap: wrap;
+}
+.shadx-logo img {
+    width: 90px;
+    height: 90px;
+    border-radius: 18px;
+    background: var(--surface-light);
+    box-shadow: var(--shadow-md);
+    object-fit: contain;
+    display: block;
+}
+.shadx-content {
+    flex: 1;
+    min-width: 220px;
+}
+.shadx-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.shadx-role {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.shadx-role span {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+.shadx-description p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+}
+.shadx-description a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+.shadx-description a:hover {
+    color: var(--accent-color);
+}
+.shadx-note {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    margin-top: 0.5rem;
+}
+@media (max-width: 700px) {
+    .shadx-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
+    .shadx-logo img {
+        width: 70px;
+        height: 70px;
+    }
+    .shadx-title {
+        font-size: 1.4rem;
+    }
+} 
