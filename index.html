@@ -490,6 +490,22 @@
         </div>
     </footer>
 
+    <!-- Video Preview Modal -->
+    <div id="videoModal" class="video-modal" style="display: none;">
+        <div class="video-modal-overlay"></div>
+        <div class="video-modal-content">
+            <button class="video-modal-close" aria-label="Close video preview">&times;</button>
+            <video id="modalVideo" class="modal-video" controls autoplay loop playsinline>
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-modal-meta">
+                <h3 id="modalVideoTitle"></h3>
+                <p id="modalVideoDesc"></p>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html> 

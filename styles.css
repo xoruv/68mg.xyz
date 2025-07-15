@@ -1191,3 +1191,124 @@ section {
         font-size: 1.4rem;
     }
 } 
+
+/* Video Preview Modal Styles */
+.video-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(.4,0,.2,1);
+}
+.video-modal.active {
+  pointer-events: auto;
+  opacity: 1;
+}
+.video-modal-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(18, 18, 20, 0.85);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+  transition: background 0.3s;
+}
+.video-modal-content {
+  position: relative;
+  z-index: 2;
+  background: #18181b;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  padding: 1.5rem;
+  max-width: 90vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  animation: modalPopIn 0.35s cubic-bezier(.4,0,.2,1);
+}
+@keyframes modalPopIn {
+  0% { transform: scale(0.92) translateY(40px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+.video-modal-close {
+  background: rgba(30,30,32,0.8);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.video-modal-close:hover {
+  background: #ff3b3b;
+  transform: scale(1.08);
+}
+.modal-video {
+  width: 70vw;
+  max-width: 900px;
+  max-height: 65vh;
+  border-radius: 1rem;
+  background: #000;
+  outline: none;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+}
+.video-modal-meta {
+  width: 100%;
+  margin-top: 1.2rem;
+  text-align: left;
+  color: #f3f3f7;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+}
+#modalVideoTitle {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem 0;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+#modalVideoDesc {
+  font-size: 1.05rem;
+  font-weight: 400;
+  margin: 0;
+  color: #bdbdc7;
+  line-height: 1.5;
+}
+@media (max-width: 700px) {
+  .modal-video {
+    width: 95vw;
+    max-width: 98vw;
+    max-height: 40vh;
+  }
+  .video-modal-content {
+    padding: 0.5rem;
+    border-radius: 0.7rem;
+  }
+  .video-modal-close {
+    font-size: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+  }
+  .video-modal-meta {
+    margin-top: 0.7rem;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+  }
+  #modalVideoTitle {
+    font-size: 1.05rem;
+  }
+  #modalVideoDesc {
+    font-size: 0.95rem;
+  }
+} 

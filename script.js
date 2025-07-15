@@ -482,3 +482,66 @@ loadingStyle.textContent = `
     }
 `;
 document.head.appendChild(loadingStyle); 
+
+// Modern Video Preview Modal Logic
+
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalSource = modalVideo.querySelector('source');
+    const closeBtn = document.querySelector('.video-modal-close');
+    const overlay = document.querySelector('.video-modal-overlay');
+    const workVideos = document.querySelectorAll('.work-video');
+
+    // Open modal on video click
+    workVideos.forEach(video => {
+        video.style.cursor = 'pointer';
+        video.addEventListener('click', function (e) {
+            e.preventDefault();
+            // Pause all videos in grid
+            workVideos.forEach(v => v.pause && v.pause());
+            // Set modal video source
+            const src = video.querySelector('source')?.src || video.currentSrc || video.src;
+            modalSource.src = src;
+            modalVideo.load();
+            // Get title and description from overlay
+            let title = '';
+            let desc = '';
+            const overlay = video.parentElement.querySelector('.work-overlay');
+            if (overlay) {
+                const h4 = overlay.querySelector('h4');
+                const p = overlay.querySelector('p');
+                title = h4 ? h4.textContent : '';
+                desc = p ? p.textContent : '';
+            }
+            document.getElementById('modalVideoTitle').textContent = title;
+            document.getElementById('modalVideoDesc').textContent = desc;
+            modal.classList.add('active');
+            modal.style.display = 'flex';
+            setTimeout(() => modalVideo.play(), 100);
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close modal function
+    function closeModal() {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            modalVideo.pause();
+            modalSource.src = '';
+            modalVideo.load();
+            document.getElementById('modalVideoTitle').textContent = '';
+            document.getElementById('modalVideoDesc').textContent = '';
+            document.body.style.overflow = '';
+        }, 250);
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}); 
